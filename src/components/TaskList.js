@@ -1,9 +1,16 @@
 import React from "react";
+import Task from "./Task";
 
-function TaskList() {
+function TaskList({ tasks, onDelete }) {
   return (
-    <div className="tasks">
-      {/* display a list of tasks using Task component */}
+    <div>
+      {tasks.length === 0 ? (
+        <p>No tasks available</p> // Display a message if no tasks exist
+      ) : (
+        tasks.map((task) => (
+          <Task key={task.id} task={task} onDelete={onDelete} />
+        ))
+      )}
     </div>
   );
 }
